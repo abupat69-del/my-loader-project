@@ -6,42 +6,7 @@
 <body>
     <h1>My Loader Script Test</h1>
     
-    <!-- Status UI will update here -->
-    <div id="status-box" style="padding: 20px; font-size: 20px; color: orange;">
-        ⏳ Initializing Loader Script...
-    </div>
-
-    <script>
-        // Core Loader Function
-        function loadAsset(url) {
-            return new Promise((resolve, reject) => {
-                const element = document.createElement('script');
-                element.async = true;
-                element.src = url;
-                
-                element.onload = () => resolve(url);
-                element.onerror = () => reject(new Error(`Failed to load: ${url}`));
-                
-                document.body.appendChild(element);
-            });
-        }
-
-        // Execution Logic
-        const statusDiv = document.getElementById('status-box');
-        const scriptToFetch = 'https://cloudflare.com';
-
-        statusDiv.innerText = '⏳ Fetching external libraries...';
-
-        loadAsset(scriptToFetch)
-            .then(() => {
-                statusDiv.style.color = 'green';
-                statusDiv.innerText = '✅ SUCCESS: Script injected and executed successfully!';
-            })
-            .catch((error) => {
-                statusDiv.style.color = 'red';
-                statusDiv.innerText = `❌ ERROR: ${error.message}`;
-            });
-    </script>
+    <!-- This forces the website to run your fixed main.js file -->
+    <script type="module" src="main.js"></script>
 </body>
 </html>
-
