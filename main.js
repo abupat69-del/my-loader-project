@@ -1,23 +1,25 @@
-// main.js
 import { loadAsset } from './asset-loader.js';
 
-// Define the dependencies you need to fetch
 const dependencies = [
-  'https://cloudflare.com',
-  'https://example.com'
+  'https://cloudflare.com'
 ];
 
-// Execute parallel loading
+// Create a text area on your page to show what is happening
+const statusDiv = document.createElement('div');
+statusDiv.style.padding = '20px';
+statusDiv.style.fontSize = '20px';
+statusDiv.innerText = '⏳ Loading assets...';
+document.body.appendChild(statusDiv);
+
 Promise.all(dependencies.map(loadAsset))
-  .then((urls) => {
-    console.log('All scripts and styles loaded successfully!', urls);
-    // Initialize your application here
-    initializeApp();
+  .then(() => {
+    // This runs if it works!
+    statusDiv.style.color = 'green';
+    statusDiv.innerText = '✅ SUCCESS: All scripts loaded successfully!';
   })
   .catch((error) => {
-    console.error('Loader initialization failed:', error);
+    // This runs if it breaks!
+    statusDiv.style.color = 'red';
+    statusDiv.innerText = `❌ ERROR: ${error.message}`;
   });
 
-function initializeApp() {
-  // Your app logic goes here
-}
