@@ -1,7 +1,8 @@
 import { loadAsset } from './asset-loader.js';
 
 const dependencies = [
-  'https://cloudflare.com'
+  'https://cloudflare.com
+'
 ];
 
 // Create a text area on your page to show what is happening
