@@ -1,7 +1,7 @@
 import { loadAsset } from './asset-loader.js';
 
 const dependencies = [
-  'https://cloudflare.com'
+  "https://cloudflare.com"
 ];
 
 Promise.all(dependencies.map(loadAsset))
